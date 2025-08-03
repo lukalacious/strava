@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Strava Tell Me More 🚴‍♂️
 
 A Python notebook that integrates with Strava API and OpenAI to generate engaging historical stories about your real cycling routes through Dutch cities and towns.
@@ -147,4 +148,4 @@ The notebook handles various error scenarios gracefully:
 
 ## License
 
-This project is open source and available under the MIT License. 
+This project is open source and available under the MIT License.
