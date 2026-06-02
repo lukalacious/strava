@@ -10,6 +10,12 @@ openai>=1.0.0
 stravalib>=0.10.4
 requests>=2.28.0
 
+# Strava MCP performance dashboard (notebooks/strava_dashboard.ipynb)
+# The dashboard acts as an MCP client and ships a bundled mock MCP server.
+mcp>=1.2.0
+nest-asyncio>=1.5.0
+matplotlib>=3.5.0
+
 # Environment and configuration
 python-dotenv>=0.19.0
 
