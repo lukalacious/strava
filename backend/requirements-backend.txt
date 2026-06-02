@@ -1,0 +1,9 @@
+# trainingdash backend (compute + ingest + store + API)
+numpy>=1.23
+pandas>=1.5
+fitparse>=1.2.0
+fastapi>=0.110
+uvicorn[standard]>=0.27
+
+# dev / test
+pytest>=7.0

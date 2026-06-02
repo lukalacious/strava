@@ -54,6 +54,16 @@ venv.bak/
 strava_mcp_tokens.json
 .config/strava-mcp/
 
+# Training dashboard data (raw export, derived cache, cached streams)
+backend/data/*
+!backend/data/raw
+backend/data/raw/*
+!backend/data/raw/.gitkeep
+*.sqlite
+*.sqlite-journal
+backend/**/streams/
+.pytest_cache/
+
 # IDEs
 .vscode/
 .idea/

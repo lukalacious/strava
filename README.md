@@ -10,6 +10,12 @@ pandas for analysis and charts. It ships with a bundled mock MCP server so it
 runs end-to-end with realistic synthetic data and **no credentials**, then
 switches to your real data by setting a single environment variable.
 
+> 🛠️ **New: compute-first training engine.** A deeper, compute-from-raw-streams
+> training dashboard (NP/IF/TSS, CP/W′, decoupling, GAP/rTSS, a unified
+> cross-sport PMC) is being built under [`backend/`](backend/README.md). It
+> computes every metric from raw per-second data rather than reading Strava's
+> scores. The notebook below remains the lightweight MCP-client overview.
+
 > ℹ️ This repository previously hosted a different project ("Strava Tell Me
 > More", an AI story generator). That project is archived under
 > [`legacy/`](legacy/README.md).
