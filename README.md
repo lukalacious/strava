@@ -2,6 +2,60 @@
 
 A Python notebook that integrates with Strava API and OpenAI to generate engaging historical stories about your real cycling routes through Dutch cities and towns.
 
+---
+
+## 📊 Strava Performance Dashboard (`notebooks/strava_dashboard.ipynb`)
+
+An analytics dashboard for your training data, powered by a **Strava MCP (Model
+Context Protocol) server**. The notebook acts as an **MCP client**: it launches a
+Strava MCP server over stdio, discovers its tools, and pulls the results into
+pandas for analysis and charts.
+
+### What it analyses
+- **Training trends** — weekly distance & time, monthly totals, year-over-year
+  cumulative distance, elevation, and training consistency.
+- **Performance & efforts** — pace/speed distributions, heart-rate-zone
+  distribution, aerobic efficiency (speed-per-HR) over time, training load with
+  the **Acute:Chronic Workload Ratio** (injury-risk indicator), and personal
+  bests. Plus a single-activity drill-down using per-second HR/speed **streams**.
+
+### Architecture
+```
+strava_dashboard.ipynb  ──(MCP client)──►  Strava MCP server  ──►  your activity data
+       │                                          ▲
+       │ default (no creds)                       │ STRAVA_MCP_COMMAND set
+       └──────────────►  mock_strava_mcp_server.py (bundled, synthetic data)
+```
+The **same client code** talks to either server, so the dashboard runs
+end-to-end with realistic synthetic data out of the box, and switches to your
+real data by setting one environment variable.
+
+### Run it
+```bash
+pip install -r requirements.txt
+jupyter notebook notebooks/strava_dashboard.ipynb   # Run All
+```
+With no configuration it uses the **bundled mock server**. To analyse **your own
+data**, set a real Strava MCP server (and your Strava credentials) in `.env`:
+```bash
+STRAVA_MCP_COMMAND="npx -y @r-huijts/strava-mcp-server"
+STRAVA_CLIENT_ID=...
+STRAVA_CLIENT_SECRET=...
+STRAVA_ACCESS_TOKEN=...
+STRAVA_REFRESH_TOKEN=...
+```
+The client discovers tools by capability and normalises fields with tolerant
+aliases, so it also works with other Strava MCP servers that name things
+differently.
+
+> Note: Strava's *official* MCP Connector (launched June 2026) is a **remote,
+> OAuth-based, Claude-only** subscription feature for conversational access. For
+> a self-contained notebook dashboard, a local stdio MCP server (like the one
+> above) is the practical data source; swap `STRAVA_MCP_COMMAND` if/when a
+> programmatic local bridge to the official connector becomes available.
+
+---
+
 ## Features
 
 ### 🚴‍♂️ Real Strava Integration
